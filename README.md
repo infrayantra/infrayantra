@@ -2,7 +2,6 @@
 
 ---
 
-````markdown
 # infrayantra/pg-fork:17.5.0
 
 Enterprise-grade PostgreSQL 17.5 Docker image with advanced extensions, observability, and automation readiness.
@@ -30,9 +29,7 @@ This image extends the standard PostgreSQL distribution by bundling **high-value
 
 ## Included PostgreSQL Version
 
-```text
 PostgreSQL 17.5
-````
 
 Built for:
 
