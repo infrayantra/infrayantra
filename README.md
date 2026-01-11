@@ -242,3 +242,96 @@ PostgreSQL and bundled extensions are licensed under their respective open-sourc
 
 **InfraYantra**
 Enterprise PostgreSQL Engineering & Automation
+
+
+Here is the **final, complete, and strictly to-the-point version**, including the **container run command**, **CLI activation**, and **usage** — no README framing, no extra narrative.
+
+---
+
+## IntelliDB Enterprise CLI – Run, Activate, Use
+
+---
+
+### Run Container
+
+```bash
+docker run -d \
+  --name intellidb-enterprise \
+  --restart unless-stopped \
+  -p 5555:5555 \
+  -v intellidb_data:/var/lib/intellidb/data \
+  -v intellidb_logs:/var/log/intellidb \
+  -e POSTGRES_USER=intellidb \
+  -e POSTGRES_PASSWORD=IDBE@2025 \
+  -e POSTGRES_DB=intellidb \
+  -e POSTGRES_PORT=5555 \
+  infrayantra/pg-fork:17.5.0
+```
+
+---
+
+### Activate IntelliDB CLI (one-time)
+
+```bash
+docker exec intellidb-enterprise bash -c \
+"ln -sf /tmp/tools/cli /usr/local/bin/intellidb-tool && chmod +x /tmp/tools/cli"
+```
+
+---
+
+### Launch IntelliDB CLI
+
+```bash
+docker exec -it intellidb-enterprise intellidb-tool
+```
+
+---
+
+### Required PostgreSQL Setup
+
+```sql
+CREATE EXTENSION IF NOT EXISTS pg_stat_statements;
+```
+
+Verify:
+
+```sql
+SHOW shared_preload_libraries;
+```
+
+Required:
+
+```text
+pg_stat_statements
+```
+
+Restart if modified:
+
+```bash
+docker restart intellidb-enterprise
+```
+
+---
+
+### Capabilities Available
+
+* Long-running query detection
+* Query performance metrics
+* Transaction ID wraparound monitoring
+* Vacuum and bloat analysis
+* Lock and blocking diagnostics
+* Session monitoring
+* WAL, buffer, and I/O inspection
+* Replication and cluster visibility
+* Advanced X-Ray diagnostics
+
+---
+
+### Notes
+
+* Runs inside the container
+* No host installation required
+* Compatible with PostgreSQL 17.5
+* Production-safe diagnostics
+
+---
