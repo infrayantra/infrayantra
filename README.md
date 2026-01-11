@@ -242,5 +242,3 @@ PostgreSQL and bundled extensions are licensed under their respective open-sourc
 
 **InfraYantra**
 Enterprise PostgreSQL Engineering & Automation
-
-```
