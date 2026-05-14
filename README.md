@@ -1,337 +1,245 @@
-## Infrayantra
+# Infrayantra — Engineering the Autonomous Infrastructure Future
+
+Infrastructure is no longer just servers, databases, and deployment pipelines.
+The next generation of digital systems will be **self-healing, intelligent, observable, secure, and autonomous by design**.
+
+That is the vision behind **Infrayantra**.
+
+Inspired by modern infrastructure movements focused on AI-assisted operations, autonomous DevOps, platform engineering, observability, and production-grade automation, Infrayantra aims to become a next-generation ecosystem for infrastructure intelligence and enterprise operations. ([infragpt.io][1])
+
+The name itself combines:
+
+* **Infra** → Infrastructure, Platforms, Reliability, Cloud & Data Systems
+* **Yantra** → Machine, Engine, Mechanism, Intelligent System
+
+Together, **Infrayantra** represents:
+
+> “An intelligent engine powering autonomous infrastructure and enterprise operations.”
 
 ---
 
-# infrayantra/pg-fork:17.5.0
+# Vision
 
-Enterprise-grade PostgreSQL 17.5 Docker image with advanced extensions, observability, and automation readiness.
+Infrayantra envisions a future where infrastructure management evolves from:
 
----
+* reactive → predictive
+* manual → autonomous
+* fragmented → unified
+* operational burden → intelligent orchestration
 
-## Overview
+The goal is to build an ecosystem where enterprises can operate cloud platforms, databases, applications, AI workloads, and distributed systems with minimal friction and maximum intelligence.
 
-`infrayantra/pg-fork:17.5.0` is a **curated PostgreSQL 17.5 Docker image** designed for **production workloads**, **DBA automation**, and **advanced observability platforms** such as IntelliDB Enterprise.
+Inspired by advancements in AI-driven infrastructure operations and platform engineering, Infrayantra focuses on enabling: ([infragpt.io][1])
 
-This image extends the standard PostgreSQL distribution by bundling **high-value extensions**, providing **clean persistence layout**, and enabling **enterprise diagnostics and tuning workflows** out of the box.
-
----
-
-## Key Features
-
-- PostgreSQL **17.5** (stable, production-ready)
-- Precompiled and bundled extensions
-- Optimized for containerized environments
-- Supports advanced monitoring and diagnostics
-- Suitable for OLTP, analytics, GIS, time-series, and AI workloads
-- Compatible with IntelliDB Enterprise tooling
-
----
-
-## Included PostgreSQL Version
-
-PostgreSQL 17.5
-
-Built for:
-
-* Linux x86_64
-* Modern GCC toolchain
-* Full PostgreSQL 17 catalog & WAL compatibility
+* Autonomous infrastructure operations
+* AI-assisted troubleshooting & RCA
+* Intelligent PostgreSQL ecosystem management
+* Enterprise observability & monitoring
+* Infrastructure automation at scale
+* DevSecOps & compliance orchestration
+* Self-healing systems
+* Platform engineering for modern enterprises
+* AI-native operations workflows
 
 ---
 
-## Included Extensions
+# Core Philosophy
 
-The following extensions are **pre-installed** and ready to be enabled per database:
+## 1. Infrastructure Should Think
 
-| Extension          | Version | Description                      |
-| ------------------ | ------- | -------------------------------- |
-| pg_stat_statements | 1.11    | Query performance tracking       |
-| plpgsql            | 1.0     | Procedural language              |
-| postgis            | 3.5.3   | Spatial & GIS support            |
-| timescaledb        | 2.23.1  | Time-series workloads            |
-| vector             | 0.7.0   | AI / embedding similarity search |
+Traditional infrastructure requires humans to continuously monitor, analyze, and react.
 
-Additional PostgreSQL contrib extensions are also available (e.g. `pgcrypto`, `pg_trgm`, `pageinspect`, `pg_walinspect`, `postgres_fdw`).
+Infrayantra believes infrastructure should:
 
----
+* detect anomalies automatically
+* predict failures before impact
+* optimize itself continuously
+* recommend fixes intelligently
+* execute remediations safely
 
-## Quick Start
-
-### Run Container
-
-```bash
-docker run -d \
-  --name intellidb-enterprise \
-  -p 5555:5555 \
-  --restart unless-stopped \
-  -v intellidb_data:/var/lib/intellidb/data \
-  -v intellidb_logs:/var/log/intellidb \
-  -e POSTGRES_USER=intellidb \
-  -e POSTGRES_PASSWORD=your_password \
-  -e POSTGRES_DB=intellidb \
-  -e POSTGRES_PORT=5555 \
-  infrayantra/pg-fork:17.5.0
-```
+The future of infrastructure is not dashboards alone — it is **decision intelligence**.
 
 ---
 
-## Environment Variables
+## 2. Automation is the Default
 
-| Variable            | Description            |
-| ------------------- | ---------------------- |
-| `POSTGRES_USER`     | Database superuser     |
-| `POSTGRES_PASSWORD` | Superuser password     |
-| `POSTGRES_DB`       | Default database       |
-| `POSTGRES_PORT`     | PostgreSQL listen port |
+Everything repeatable should be automated.
 
-> These variables are applied **only during first initialization**.
+From provisioning to deployment, monitoring to scaling, backup to disaster recovery — automation must become foundational rather than optional.
 
----
+Infrayantra embraces:
 
-## Data Persistence
-
-### Directory Layout
-
-| Path                      | Purpose                   |
-| ------------------------- | ------------------------- |
-| `/var/lib/intellidb/data` | PostgreSQL data directory |
-| `/var/log/intellidb`      | PostgreSQL logs           |
-
-### Recommended Volumes
-
-```bash
--v intellidb_data:/var/lib/intellidb/data
--v intellidb_logs:/var/log/intellidb
-```
-
-This ensures:
-
-* Data durability
-* Safe container recreation
-* Separation of data and logs
+* Infrastructure as Code (IaC)
+* GitOps
+* AI-assisted operations
+* Automated governance
+* Intelligent workflows
+* Zero-touch deployments
 
 ---
 
-## Enabling Extensions (Per Database)
+## 3. PostgreSQL & Open Infrastructure Matter
 
-Extensions are installed system-wide but must be enabled per database.
+Modern enterprises require open, scalable, and reliable infrastructure foundations.
 
-### Enable pg_stat_statements
+Infrayantra strongly aligns with:
 
-```sql
-CREATE EXTENSION IF NOT EXISTS pg_stat_statements;
-```
+* PostgreSQL ecosystems
+* Open-source technologies
+* Linux-first infrastructure
+* Cloud-native architectures
+* Kubernetes & container platforms
+* Platform engineering principles
 
-### Enable TimescaleDB
-
-```sql
-CREATE EXTENSION IF NOT EXISTS timescaledb;
-```
-
-### Enable PostGIS
-
-```sql
-CREATE EXTENSION IF NOT EXISTS postgis;
-CREATE EXTENSION IF NOT EXISTS postgis_topology;
-CREATE EXTENSION IF NOT EXISTS postgis_tiger_geocoder;
-```
-
-### Enable Vector (AI / embeddings)
-
-```sql
-CREATE EXTENSION IF NOT EXISTS vector;
-```
-
-Example:
-
-```sql
-CREATE TABLE embeddings (
-  id BIGSERIAL PRIMARY KEY,
-  embedding vector(1536)
-);
-```
+The mission is to empower organizations with enterprise-grade capabilities without unnecessary complexity or vendor lock-in.
 
 ---
 
-## Advanced Diagnostic Extensions
+# What Infrayantra Aims to Build
 
-```sql
-CREATE EXTENSION IF NOT EXISTS pageinspect;
-CREATE EXTENSION IF NOT EXISTS pgstattuple;
-CREATE EXTENSION IF NOT EXISTS pg_freespacemap;
-CREATE EXTENSION IF NOT EXISTS pg_walinspect;
-```
+## Enterprise PostgreSQL Intelligence Platform
 
-Used for:
+A unified ecosystem for:
 
-* Page-level inspection
-* Bloat analysis
-* WAL diagnostics
-* Storage forensics
-
----
-
-## shared_preload_libraries
-
-For full observability support, ensure:
-
-```sql
-SHOW shared_preload_libraries;
-```
-
-Recommended minimum:
-
-```text
-pg_stat_statements
-```
-
-If required, configure in `postgresql.conf`:
-
-```conf
-shared_preload_libraries = 'pg_stat_statements'
-```
-
-Then restart the container:
-
-```bash
-docker restart intellidb-enterprise
-```
+* PostgreSQL monitoring
+* Performance tuning
+* Query analysis
+* Backup orchestration
+* Replication management
+* HA/DR automation
+* AI-powered recommendations
+* Security auditing
+* Capacity forecasting
+* Incident analysis
 
 ---
 
-## Compatibility
+## Autonomous Infrastructure Operations
 
-This image is compatible with:
+A platform capable of:
 
-* PostgreSQL native clients
-* pgBouncer
-* Logical & streaming replication
-* IntelliDB Enterprise diagnostics & tuning tools
-* Monitoring stacks (Prometheus, Grafana via exporters)
-
----
-
-## Intended Use Cases
-
-* Enterprise OLTP databases
-* Time-series ingestion & analytics
-* GIS / spatial workloads
-* AI vector similarity search
-* DBA automation & self-healing systems
-* Advanced PostgreSQL diagnostics
+* AI-assisted remediation
+* Intelligent alert correlation
+* Predictive incident detection
+* Root cause analysis
+* Self-healing workflows
+* Infrastructure drift detection
+* Cost optimization
+* Performance anomaly detection
 
 ---
 
-## Production Recommendations
+## Unified Observability Layer
 
-* Use Docker networks instead of exposing ports publicly
-* Add pgBouncer for connection pooling
-* Enable WAL archiving for backups
-* Monitor using exporters and dashboards
-* Use replicas for read scaling and HA
+Modern systems generate enormous operational data.
 
----
+Infrayantra aims to unify:
 
-## License
+* logs
+* metrics
+* traces
+* events
+* database telemetry
+* infrastructure signals
 
-PostgreSQL and bundled extensions are licensed under their respective open-source licenses.
-
----
-
-## Maintained By
-
-**InfraYantra**
-Enterprise PostgreSQL Engineering & Automation
-
-
-Here is the **final, complete, and strictly to-the-point version**, including the **container run command**, **CLI activation**, and **usage** — no README framing, no extra narrative.
+into a centralized intelligence system capable of operational reasoning.
 
 ---
 
-## IntelliDB Enterprise CLI – Run, Activate, Use
+## Platform Engineering Ecosystem
+
+A developer-first operational ecosystem including:
+
+* Internal developer platforms
+* Self-service infrastructure
+* Deployment orchestration
+* CI/CD intelligence
+* Secure delivery pipelines
+* Automated environment provisioning
+* Governance guardrails
 
 ---
 
-### Run Container
+# Long-Term Mission
 
-```bash
-docker run -d \
-  --name intellidb-enterprise \
-  --restart unless-stopped \
-  -p 5555:5555 \
-  -v intellidb_data:/var/lib/intellidb/data \
-  -v intellidb_logs:/var/log/intellidb \
-  -e POSTGRES_USER=intellidb \
-  -e POSTGRES_PASSWORD=IDBE@2025 \
-  -e POSTGRES_DB=intellidb \
-  -e POSTGRES_PORT=5555 \
-  infrayantra/pg-fork:17.5.0
-```
+The long-term ambition of Infrayantra is to become:
+
+> “An AI-native infrastructure intelligence and operations ecosystem for modern enterprises.”
+
+Not merely another monitoring dashboard.
+
+Not just another DevOps toolkit.
+
+But a unified operational intelligence layer capable of understanding infrastructure, databases, systems, and production behavior at scale.
 
 ---
 
-### Activate IntelliDB CLI (one-time)
+# Key Technology Domains
 
-```bash
-docker exec intellidb-enterprise bash -c \
-"ln -sf /tmp/tools/cli /usr/local/bin/intellidb-tool && chmod +x /tmp/tools/cli"
-```
+Infrayantra operates at the intersection of:
 
----
-
-### Launch IntelliDB CLI
-
-```bash
-docker exec -it intellidb-enterprise intellidb-tool
-```
-
----
-
-### Required PostgreSQL Setup
-
-```sql
-CREATE EXTENSION IF NOT EXISTS pg_stat_statements;
-```
-
-Verify:
-
-```sql
-SHOW shared_preload_libraries;
-```
-
-Required:
-
-```text
-pg_stat_statements
-```
-
-Restart if modified:
-
-```bash
-docker restart intellidb-enterprise
-```
+* PostgreSQL Engineering
+* DevOps
+* SRE
+* Platform Engineering
+* Cloud Infrastructure
+* Kubernetes
+* AI for Operations (AIOps)
+* Infrastructure Automation
+* Observability Engineering
+* Reliability Engineering
+* Security Automation
+* Performance Optimization
+* Enterprise Systems Engineering
 
 ---
 
-### Capabilities Available
+# Principles
 
-* Long-running query detection
-* Query performance metrics
-* Transaction ID wraparound monitoring
-* Vacuum and bloat analysis
-* Lock and blocking diagnostics
-* Session monitoring
-* WAL, buffer, and I/O inspection
-* Replication and cluster visibility
-* Advanced X-Ray diagnostics
+## Reliability First
+
+Systems should remain resilient under failure conditions.
+
+## Automation Everywhere
+
+Reduce repetitive operational overhead.
+
+## Open by Design
+
+Build around open ecosystems and interoperability.
+
+## Intelligence Driven
+
+Use AI to assist operations responsibly.
+
+## Security Integrated
+
+Security must be embedded, not added later.
+
+## Production Grade
+
+Every feature should be designed with real-world operational realities in mind.
 
 ---
 
-### Notes
+# The Bigger Goal
 
-* Runs inside the container
-* No host installation required
-* Compatible with PostgreSQL 17.5
-* Production-safe diagnostics
+Infrayantra is not just a repository.
+
+It is the beginning of a broader initiative toward:
+
+* intelligent infrastructure systems
+* AI-assisted enterprise operations
+* autonomous database management
+* scalable platform engineering
+* production-grade operational intelligence
+
+The objective is to bridge the gap between:
+
+* infrastructure and intelligence
+* operations and automation
+* observability and action
+* databases and autonomous management
 
 ---
+
