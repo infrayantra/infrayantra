@@ -5,7 +5,7 @@ The next generation of digital systems will be **self-healing, intelligent, obse
 
 That is the vision behind **Infrayantra**.
 
-Inspired by modern infrastructure movements focused on AI-assisted operations, autonomous DevOps, platform engineering, observability, and production-grade automation, Infrayantra aims to become a next-generation ecosystem for infrastructure intelligence and enterprise operations. ([infragpt.io][1])
+Inspired by modern infrastructure movements focused on AI-assisted operations, autonomous DevOps, platform engineering, observability, and production-grade automation, Infrayantra aims to become a next-generation ecosystem for infrastructure intelligence and enterprise operations.
 
 The name itself combines:
 
@@ -29,7 +29,7 @@ Infrayantra envisions a future where infrastructure management evolves from:
 
 The goal is to build an ecosystem where enterprises can operate cloud platforms, databases, applications, AI workloads, and distributed systems with minimal friction and maximum intelligence.
 
-Inspired by advancements in AI-driven infrastructure operations and platform engineering, Infrayantra focuses on enabling: ([infragpt.io][1])
+Inspired by advancements in AI-driven infrastructure operations and platform engineering, Infrayantra focuses on enabling: 
 
 * Autonomous infrastructure operations
 * AI-assisted troubleshooting & RCA
